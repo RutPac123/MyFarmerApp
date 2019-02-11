@@ -60,7 +60,25 @@
         android:layout_centerHorizontal="true"
         android:textStyle="italic|bold"
         android:textColor="#000"
+        android:id="@+id/signtxt"
         android:text="Not having an account? Sign Up by clicking here!"
         android:textAlignment="center"/>
+    <Button
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Sign up to MyFarmer"
+        android:layout_below="@+id/signtxt"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_btn2"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:paddingLeft="5dp"
+        android:paddingRight="20dp"
+        android:drawableLeft="@drawable/loginicon"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/custom_sign_up"/>
+
 
 </RelativeLayout>
