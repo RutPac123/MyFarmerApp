@@ -5,21 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/logback"
-    tools:context=".MainActivity">
+    tools:context=".SignUp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login here!"
+        android:text="Sign up here!"
         android:textStyle="bold"
         android:textSize="30sp"
         android:textColor="#000"
         android:fontFamily="monospace"
-        android:id="@+id/title"
+        android:id="@+id/signuptitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         />
-
 
     <EditText
         android:layout_width="match_parent"
@@ -30,7 +29,7 @@
         android:layout_marginRight="20dp"
         android:paddingLeft="20dp"
         android:background="@drawable/round_btn"
-        android:layout_below="@id/title"
+        android:layout_below="@id/signuptitle"
         android:inputType="textEmailAddress"
         android:id="@+id/mail"/>
     <EditText
@@ -50,8 +49,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/login"
+        android:text="Sign Up"
+        android:id="@+id/signup"
         android:layout_below="@id/pass"
         android:textColor="#fff"
         android:textStyle="bold"
@@ -59,21 +58,11 @@
         android:layout_centerInParent="true"
         android:background="#2ecc72"
         android:layout_marginTop="30dp"/>
+
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="250dp"
-        android:src="@drawable/girlwithkey"
-        android:layout_below="@id/login"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/girlkey"
-        />
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:layout_below="@+id/login"
-        android:layout_marginLeft="-105dp"
-        android:layout_marginTop="18dp"
-        android:layout_toRightOf="@+id/girlkey"
-        android:src="@drawable/lock" />
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/signup"
+        android:layout_marginLeft="200dp"
+        android:src="@drawable/signupgirl" />
 </RelativeLayout>

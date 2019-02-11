@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@drawable/backwel"
     tools:context=".Welcome">
 
     <TextView
@@ -75,7 +75,7 @@
         android:textSize="15sp"
         android:paddingLeft="5dp"
         android:paddingRight="20dp"
-        android:drawableLeft="@drawable/loginicon"
+        android:drawableLeft="@drawable/signupmale"
         android:textStyle="bold"
         android:layout_marginBottom="20dp"
         android:id="@+id/custom_sign_up"/>
