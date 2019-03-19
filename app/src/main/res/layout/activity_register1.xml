@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/regback"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="100dp"
+        android:textSize="48sp"
+        android:id="@+id/weltxt"
+        android:textStyle="bold"
+        android:textColor="#000"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Be a part of our
+        farmer family..."
+        android:layout_below="@+id/weltxt"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:textSize="30sp"
+        android:id="@+id/bepartxt"
+        android:textColor="#000"/>
+    <RelativeLayout
+        android:orientation="vertical"
+        android:translationY="-20dp"
+        android:paddingRight="30sp"
+        android:paddingLeft="30sp"
+        android:layout_marginTop="100dp"
+        android:layout_below="@+id/bepartxt"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:inputType="textPersonName"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:id="@+id/inputName"
+            android:padding="8sp"
+            android:hint="What's your name?"
+            android:background="@drawable/inputbg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/lgprogress1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="20sp"
+            android:layout_below="@+id/inputName"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_arrow_forward_black_24dp"
+            app:backgroundTint="#134ead" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

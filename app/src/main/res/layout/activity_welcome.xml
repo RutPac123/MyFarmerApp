@@ -22,7 +22,7 @@
     <Button
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:text="Login here with facebook"
+        android:text="Login here with Google"
         android:layout_below="@+id/welcometxt"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
@@ -31,15 +31,15 @@
         android:textSize="15sp"
         android:paddingLeft="5dp"
         android:paddingRight="20dp"
-        android:drawableLeft="@drawable/fblogo"
+        android:drawableLeft="@drawable/googleicon"
         android:textStyle="bold"
-        android:id="@+id/fblogin"/>
+        android:id="@+id/googlelogin"/>
 
     <Button
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:text="Login here with MyFarmer "
-        android:layout_below="@+id/fblogin"
+        android:layout_below="@+id/googlelogin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:background="@drawable/round_btn_login"
