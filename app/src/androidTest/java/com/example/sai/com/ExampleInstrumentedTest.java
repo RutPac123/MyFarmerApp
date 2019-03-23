@@ -1,4 +1,4 @@
-package com.example.sai.myfarmer;
+package com.example.sai.com;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

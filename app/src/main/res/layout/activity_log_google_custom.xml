@@ -1,9 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogGoogleCustom">
+    android:background="#fff"
+    tools:context=".Welcome">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Farmer!"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:fontFamily="monospace"
+        android:id="@+id/welcometxt"/>
+
+    <Button
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Login here with Google"
+        android:layout_below="@+id/welcometxt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/round_btn_fb"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:paddingLeft="5dp"
+        android:paddingRight="20dp"
+        android:drawableLeft="@drawable/googleicon"
+        android:textStyle="bold"
+        android:id="@+id/googlelogin"/>
+
+    <Button
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Login here with MyFarmer "
+        android:layout_below="@+id/googlelogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/round_btn_login"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:paddingLeft="5dp"
+        android:paddingRight="20dp"
+        android:drawableLeft="@drawable/loginicon"
+        android:textStyle="bold"
+        android:id="@+id/custom_login"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/custom_sign_up"
+        android:layout_below="@+id/custom_login"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="italic|bold"
+        android:textColor="#000"
+        android:text="Not having an account? Sign Up by clicking here!"
+        android:textAlignment="center"/>
+
+</RelativeLayout>

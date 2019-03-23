@@ -1,13 +1,16 @@
-package com.example.sai.myfarmer;
+package com.example.sai.com;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class LogGoogleCustom extends AppCompatActivity {
+import com.example.sai.myfarmerapp.R;
+
+
+public class SignUp extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_google_custom);
+        setContentView(R.layout.activity_sign_up);
     }
 }

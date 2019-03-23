@@ -1,4 +1,4 @@
-package com.example.sai.myfarmer;
+package com.example.sai.com;
 
 import org.junit.Test;
 

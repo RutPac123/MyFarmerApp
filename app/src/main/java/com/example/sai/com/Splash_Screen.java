@@ -1,12 +1,11 @@
-package com.example.sai.myfarmer;
+package com.example.sai.com;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.sai.myfarmerapp.R;
 
 public class Splash_Screen extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class Splash_Screen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Splash_Screen.this,Welcome.class);
+                Intent intent = new Intent(Splash_Screen.this,LogGoogleCustom.class);
                 startActivity(intent);
                 finish();
             }
