@@ -26,8 +26,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LogGoogleCustom extends AppCompatActivity {
 
-    private Button loginbtn, signup;
-    private Button googleSignInBtn;
+    private Button loginbtn, signup, googleSignInBtn;
     private static String TAG = "TAG";
     private GoogleSignInClient mgoogleSignInClient;
     private static final int RC_SIGN_IN = 101;

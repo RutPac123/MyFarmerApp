@@ -11,11 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.sai.com.NewsDetails"></activity>
+        <activity android:name="com.example.sai.com.NewsDetails" />
         <activity
             android:name="com.example.sai.com.ExecuteRSS"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.example.sai.com.Webview" />
         <activity android:name="com.example.sai.com.Register1" />
         <activity android:name="com.example.sai.com.Register2" />
@@ -32,7 +32,8 @@
         </activity>
         <activity android:name="com.example.sai.com.LogGoogleCustom" />
         <activity android:name="com.example.sai.com.Login" />
-        <activity android:name="com.example.sai.com.SignUp"/>
+        <activity android:name="com.example.sai.com.SignUp" />
+        <activity android:name="com.example.sai.com.ForgotPassword"></activity>
     </application>
 
 </manifest>
