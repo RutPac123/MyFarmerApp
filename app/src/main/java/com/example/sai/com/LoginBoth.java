@@ -28,8 +28,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginBoth extends AppCompatActivity {
 
-    private Button loginbtn;
-    private Button googleSignInBtn;
+    private Button loginbtn,  googleSignInBtn;
     private static String TAG = "TAG";
     private GoogleSignInClient mgoogleSignInClient;
     private static final int RC_SIGN_IN = 101;
@@ -52,7 +51,6 @@ public class LoginBoth extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_log_google_custom);
 
-
             loginbtn = findViewById(R.id.custom_login);
             googleSignInBtn = findViewById(R.id.googlelogin);
             signuptxt = findViewById(R.id.custom_sign_up);
@@ -62,6 +60,7 @@ public class LoginBoth extends AppCompatActivity {
             });
 
             loginbtn.setOnClickListener(v -> startActivity(new Intent(LoginBoth.this, Login.class)));
+
             googleSignInBtn = findViewById(R.id.googlelogin);
             firebaseAuth = FirebaseAuth.getInstance();
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -79,6 +78,8 @@ public class LoginBoth extends AppCompatActivity {
                     startActivityForResult(mgoogleSignInClient.getSignInIntent(), 101);
                 }
             });
+
+
         }
 
         private void updateUI(FirebaseUser user) {

@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sai.myfarmerapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -145,4 +144,6 @@ public class Login extends AppCompatActivity {
 
         builder.show();
     }
+
+
 }

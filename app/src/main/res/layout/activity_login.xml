@@ -25,12 +25,12 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:hint="Enter email address"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:paddingLeft="20dp"
         android:background="@drawable/round_btn"
-        android:layout_below="@id/title"
+        android:layout_below="@+id/title"
         android:inputType="textEmailAddress"
         android:id="@+id/mail"/>
     <EditText
@@ -47,12 +47,23 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="50dp"
         android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/forget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pass"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:text="Forgot Password?"
+        android:textSize="20sp"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
         android:id="@+id/login"
-        android:layout_below="@id/pass"
+        android:layout_below="@+id/forget"
         android:textColor="#fff"
         android:textStyle="bold"
         android:fontFamily="monospace"
@@ -74,7 +85,7 @@
         android:layout_width="200dp"
         android:layout_height="250dp"
         android:src="@drawable/girlwithkey"
-        android:layout_below="@id/login"
+        android:layout_below="@+id/login"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         android:id="@+id/girlkey"
