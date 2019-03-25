@@ -9,7 +9,7 @@ import com.example.sai.myfarmerapp.R;
 
 public class Splash_Screen extends AppCompatActivity {
 
-    private long SPLASH_TIME=3000;
+    private long SPLASH_TIME=1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class Splash_Screen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Splash_Screen.this,LogGoogleCustom.class);
+                Intent intent = new Intent(Splash_Screen.this, LoginBoth.class);
                 startActivity(intent);
                 finish();
             }

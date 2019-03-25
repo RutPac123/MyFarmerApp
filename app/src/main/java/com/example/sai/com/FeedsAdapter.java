@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -17,9 +18,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-/**
- * Created by rishabh on 26-02-2016.
- */
+
 public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.MyViewHolder> {
     ArrayList<FeedItem>feedItems;
     Context context;
@@ -57,7 +56,12 @@ public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.MyViewHolder
 
     @Override
     public int getItemCount() {
-        return feedItems.size();
+        if (feedItems.size()!=0){
+            return feedItems.size();
+        }else{
+            Toast.makeText(context, "Error loading data :( ", Toast.LENGTH_SHORT).show();
+            return 0;
+        }
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

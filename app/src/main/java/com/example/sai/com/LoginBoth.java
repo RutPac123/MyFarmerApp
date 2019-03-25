@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sai.myfarmerapp.R;
@@ -16,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -24,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class LogGoogleCustom extends AppCompatActivity {
+public class LoginBoth extends AppCompatActivity {
 
     private Button loginbtn;
     private Button googleSignInBtn;
@@ -33,6 +35,8 @@ public class LogGoogleCustom extends AppCompatActivity {
     private static final int RC_SIGN_IN = 101;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progress;
+    private TextView signuptxt;
+
 
     @Override
     protected void onStart() {
@@ -51,13 +55,13 @@ public class LogGoogleCustom extends AppCompatActivity {
 
             loginbtn = findViewById(R.id.custom_login);
             googleSignInBtn = findViewById(R.id.googlelogin);
+            signuptxt = findViewById(R.id.custom_sign_up);
 
-            loginbtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(LogGoogleCustom.this, Login.class));
-                }
+            signuptxt.setOnClickListener(v -> {
+                startActivity(new Intent(LoginBoth.this,Register1.class));
             });
+
+            loginbtn.setOnClickListener(v -> startActivity(new Intent(LoginBoth.this, Login.class)));
             googleSignInBtn = findViewById(R.id.googlelogin);
             firebaseAuth = FirebaseAuth.getInstance();
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -69,7 +73,7 @@ public class LogGoogleCustom extends AppCompatActivity {
             googleSignInBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    progress = ProgressDialog.show(LogGoogleCustom.this, "Please Wait..",
+                    progress = ProgressDialog.show(LoginBoth.this, "Please Wait..",
                             "Authenticating...", true);
                     progress.show();
                     startActivityForResult(mgoogleSignInClient.getSignInIntent(), 101);
@@ -79,7 +83,7 @@ public class LogGoogleCustom extends AppCompatActivity {
 
         private void updateUI(FirebaseUser user) {
             if (user != null) {
-                Intent intent = new Intent(LogGoogleCustom.this, MainActivity.class);
+                Intent intent = new Intent(LoginBoth.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -123,8 +127,8 @@ public class LogGoogleCustom extends AppCompatActivity {
                                 updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.
-                                Toast.makeText(LogGoogleCustom.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(LogGoogleCustom.this, "login failed :(", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginBoth.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginBoth.this, "login failed :(", Toast.LENGTH_SHORT).show();
                                 updateUI(null);
                                 progress.hide();
                             }

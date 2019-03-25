@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sai.myfarmerapp">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,7 +17,6 @@
             android:name="com.example.sai.com.ExecuteRSS"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name="com.example.sai.com.Webview" />
         <activity android:name="com.example.sai.com.Register1" />
         <activity android:name="com.example.sai.com.Register2" />
         <activity
@@ -30,7 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.sai.com.LogGoogleCustom" />
+        <activity android:name="com.example.sai.com.LoginBoth" />
         <activity android:name="com.example.sai.com.Login" />
     </application>
 
