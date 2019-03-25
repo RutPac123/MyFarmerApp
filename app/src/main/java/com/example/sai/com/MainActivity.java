@@ -66,8 +66,16 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                  //      .setAction("Action", null).show();
+                Intent intent=new Intent(Intent.ACTION_SEND);
+                String[] recipients={"developer@gmail.com"};
+                intent.putExtra(Intent.EXTRA_EMAIL, recipients);
+                intent.putExtra(Intent.EXTRA_SUBJECT,"Subject text here...");
+                intent.putExtra(Intent.EXTRA_TEXT,"Body of the content here...");
+                intent.setType("text/html");
+                intent.setPackage("com.google.android.gm");
+                startActivity(Intent.createChooser(intent, "Send mail"));
             }
         });
 
