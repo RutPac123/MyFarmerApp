@@ -21,15 +21,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.sai.myfarmerapp.R;
+import com.firebase.client.Firebase;
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,7 +55,8 @@ public class MainActivity extends AppCompatActivity
     private DatabaseReference databaseReference;
     private TextView usrmail;
     private GoogleApiClient googleApiClient;
-
+    private Firebase firebase;
+    private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +100,9 @@ public class MainActivity extends AppCompatActivity
         View headerview = navigationView.getHeaderView(0);
         usrname = headerview.findViewById(R.id.uname);
         usrmail = headerview.findViewById(R.id.umail);
+        image = headerview.findViewById(R.id.imageView1);
 
+        Glide.with(getApplicationContext()).load(firebaseAuth.getCurrentUser().getPhotoUrl()).apply(RequestOptions.circleCropTransform()).into(image);
         usrname.setText(firebaseAuth.getCurrentUser().getDisplayName());
         usrmail.setText(firebaseAuth.getCurrentUser().getEmail());
 
