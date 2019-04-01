@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_blogs) {
             startActivity(new Intent(MainActivity.this,ExecuteRSS.class));
         } else if (id == R.id.nav_slideshow) {
+            startActivity(new Intent(MainActivity.this, ChangePhone.class));
         } else if (id == R.id.nav_manage) {
             startActivity(new Intent(MainActivity.this, MainActivityChat.class));
         } else if (id == R.id.nav_share) {

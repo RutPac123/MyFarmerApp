@@ -60,7 +60,8 @@
         android:fontFamily="monospace"
         android:layout_centerInParent="true"
         android:background="#2ecc72"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        tools:ignore="UnknownId" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

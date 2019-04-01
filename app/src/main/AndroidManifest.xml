@@ -38,6 +38,7 @@
         <activity android:name="com.example.sai.com.Login" />
         <activity android:name="com.example.sai.com.chatbot.MainActivityChat" />
         <activity android:name="com.example.sai.com.OTP" />
+        <activity android:name="com.example.sai.com.ChangePhone"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sai.com.ChangePhone"
+    android:padding="16dp">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Phone Number"
+        android:inputType="phone"
+        android:digits="0123456789"
+        android:id="@+id/edit_phone"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_phone"
+        android:layout_marginTop="16dp"
+        android:text="1234567890"
+        android:textSize="32sp"
+        android:id="@+id/current_phone"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/current_phone"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="Update Number"
+        android:id="@+id/update_phone"
+        android:onClick="updatePhone"/>
+
+</RelativeLayout>
