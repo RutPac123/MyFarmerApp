@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.sai.com.chatbot.MainActivityChat;
 import com.example.sai.myfarmerapp.R;
 import com.firebase.client.Firebase;
 import com.google.android.gms.auth.api.Auth;
@@ -169,12 +170,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-//            startActivity(new Intent(MainActivity.this,MainActivity.class));
+
         } else if (id == R.id.nav_blogs) {
             startActivity(new Intent(MainActivity.this,ExecuteRSS.class));
         } else if (id == R.id.nav_slideshow) {
         } else if (id == R.id.nav_manage) {
-
+            startActivity(new Intent(MainActivity.this, MainActivityChat.class));
         } else if (id == R.id.nav_share) {
             shareIt();
         } else if (id == R.id.nav_signout) {

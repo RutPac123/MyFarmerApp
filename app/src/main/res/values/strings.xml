@@ -9,4 +9,8 @@
     <string name="title_activity_welcome">Welcome</string>
     <string name="forgot_String"><u>Forgot Password?</u>.</string>
     <string name="email_input">Enter registered email id</string>
+    <string name="what_s_on_your_mind">What\'s on your mind?</string>
+    <color name="bg_bubble_self">#62caa6</color>
+
+    <color name="bg_bubble_watbot">#ecf0f1</color>
 </resources>

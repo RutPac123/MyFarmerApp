@@ -4,8 +4,10 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"></uses-permission>
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"></uses-permission>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -14,11 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.sai.com.NewsDetails"></activity>
+        <activity android:name="com.example.sai.com.NewsDetails" />
         <activity
             android:name="com.example.sai.com.ExecuteRSS"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.example.sai.com.Register1" />
         <activity android:name="com.example.sai.com.Register2" />
         <activity
@@ -34,6 +36,8 @@
         </activity>
         <activity android:name="com.example.sai.com.LoginBoth" />
         <activity android:name="com.example.sai.com.Login" />
+        <activity android:name="com.example.sai.com.chatbot.MainActivityChat" />
+        <activity android:name="com.example.sai.com.OTP" />
     </application>
 
 </manifest>
