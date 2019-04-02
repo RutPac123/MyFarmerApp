@@ -43,9 +43,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.wenchao.cardstack.CardStack;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, CardStack.CardEventListener {
 
     private FirebaseAuth firebaseAuth;
     private CoordinatorLayout coordinatorLayout;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity
     private GoogleApiClient googleApiClient;
     private Firebase firebase;
     private ImageView image;
+    private CardStack cardStack;
+    private CardAdapter cardAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,9 +106,16 @@ public class MainActivity extends AppCompatActivity
         usrmail = headerview.findViewById(R.id.umail);
         image = headerview.findViewById(R.id.imageView1);
 
+        initimages();
+        cardStack = findViewById(R.id.stackview);
+        cardStack.setContentResource(R.layout.card_layout);
+        cardStack.setAdapter(cardAdapter);
+        cardStack.setListener(this);
+
         Glide.with(getApplicationContext()).load(firebaseAuth.getCurrentUser().getPhotoUrl()).apply(RequestOptions.circleCropTransform()).into(image);
         usrname.setText(firebaseAuth.getCurrentUser().getDisplayName());
         usrmail.setText(firebaseAuth.getCurrentUser().getEmail());
+
 
         SharedPreferences preferences = getSharedPreferences("NAME",MODE_PRIVATE);
         nametxt = preferences.getString("uName",null);
@@ -115,6 +125,51 @@ public class MainActivity extends AppCompatActivity
         databaseReference.setValue(nametxt);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child(firebaseAuth.getCurrentUser().getUid());
+
+
+
+    }
+
+    private void initimages() {
+        cardAdapter = new CardAdapter(getApplicationContext(),0);
+        cardAdapter.add(R.mipmap.farmeraccident);
+        cardAdapter.add(R.mipmap.fasal);
+        cardAdapter.add(R.mipmap.kisansanman);
+        cardAdapter.add(R.mipmap.pashu);
+        cardAdapter.add(R.mipmap.yojna);
+        cardAdapter.add(R.mipmap.farmeraccident);
+        cardAdapter.add(R.mipmap.fasal);
+        cardAdapter.add(R.mipmap.kisansanman);
+        cardAdapter.add(R.mipmap.pashu);
+        cardAdapter.add(R.mipmap.yojna);
+        cardAdapter.add(R.mipmap.farmeraccident);
+        cardAdapter.add(R.mipmap.fasal);
+        cardAdapter.add(R.mipmap.kisansanman);
+        cardAdapter.add(R.mipmap.pashu);
+        cardAdapter.add(R.mipmap.yojna);
+        cardAdapter.add(R.mipmap.farmeraccident);
+        cardAdapter.add(R.mipmap.fasal);
+        cardAdapter.add(R.mipmap.kisansanman);
+        cardAdapter.add(R.mipmap.pashu);
+        cardAdapter.add(R.mipmap.yojna);cardAdapter.add(R.mipmap.farmeraccident);
+        cardAdapter.add(R.mipmap.fasal);
+        cardAdapter.add(R.mipmap.kisansanman);
+        cardAdapter.add(R.mipmap.pashu);
+        cardAdapter.add(R.mipmap.yojna);cardAdapter.add(R.mipmap.farmeraccident);
+        cardAdapter.add(R.mipmap.fasal);
+        cardAdapter.add(R.mipmap.kisansanman);
+        cardAdapter.add(R.mipmap.pashu);
+        cardAdapter.add(R.mipmap.yojna);cardAdapter.add(R.mipmap.farmeraccident);
+        cardAdapter.add(R.mipmap.fasal);
+        cardAdapter.add(R.mipmap.kisansanman);
+        cardAdapter.add(R.mipmap.pashu);
+        cardAdapter.add(R.mipmap.yojna);cardAdapter.add(R.mipmap.farmeraccident);
+        cardAdapter.add(R.mipmap.fasal);
+        cardAdapter.add(R.mipmap.kisansanman);
+        cardAdapter.add(R.mipmap.pashu);
+        cardAdapter.add(R.mipmap.yojna);
+
+
 
 
 
@@ -173,9 +228,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_blogs) {
             startActivity(new Intent(MainActivity.this,ExecuteRSS.class));
-        } else if (id == R.id.nav_slideshow) {
-        } else if (id == R.id.nav_manage) {
-            startActivity(new Intent(MainActivity.this, MainActivityChat.class));
+        } else if (id == R.id.nav_change_pno) {
+            startActivity(new Intent(MainActivity.this,ChangePhone.class));
+        } else if (id == R.id.nav_group) {
+            startActivity(new Intent(MainActivity.this,MainGroupChat.class));
         } else if (id == R.id.nav_share) {
             shareIt();
         } else if (id == R.id.nav_signout) {
@@ -211,5 +267,30 @@ public class MainActivity extends AppCompatActivity
         shareintnet.putExtra(Intent.EXTRA_TEXT,"Hey download this useful farming related application  -> \n"+ link);
         shareintnet.setType("text/plain");
         startActivity(shareintnet);
+    }
+
+    @Override
+    public boolean swipeEnd(int i, float v) {
+        return v > 300;
+    }
+
+    @Override
+    public boolean swipeStart(int i, float v) {
+        return true;
+    }
+
+    @Override
+    public boolean swipeContinue(int i, float v, float v1) {
+        return true;
+    }
+
+    @Override
+    public void discarded(int i, int i1) {
+
+    }
+
+    @Override
+    public void topCardTapped() {
+        startActivity(new Intent(MainActivity.this,Schemes.class));
     }
 }
