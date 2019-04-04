@@ -10,6 +10,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -61,6 +62,9 @@ public class MainActivity extends AppCompatActivity
     private ImageView image;
     private CardStack cardStack;
     private CardAdapter cardAdapter;
+    private ImageView fertilizer;
+    private ImageView seed;
+    private ImageView pesticide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +115,28 @@ public class MainActivity extends AppCompatActivity
         cardStack.setContentResource(R.layout.card_layout);
         cardStack.setAdapter(cardAdapter);
         cardStack.setListener(this);
+
+        fertilizer = (ImageView) findViewById(R.id.fertilizer);
+        fertilizer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "View Fertilizers", Toast.LENGTH_SHORT).show();
+            }
+        });
+        seed = (ImageView)findViewById(R.id.seed);
+        seed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "View Seeds", Toast.LENGTH_SHORT).show();
+            }
+        });
+        pesticide = (ImageView)findViewById(R.id.pest);
+        pesticide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "View Pesticides", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         Glide.with(getApplicationContext()).load(firebaseAuth.getCurrentUser().getPhotoUrl()).apply(RequestOptions.circleCropTransform()).into(image);
         usrname.setText(firebaseAuth.getCurrentUser().getDisplayName());

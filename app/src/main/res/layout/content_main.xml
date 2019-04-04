@@ -1,20 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_main"
-    tools:context="com.example.sai.com.MainActivity">
+    tools:context="com.example.sai.com.MainActivity"
+    tools:showIn="@layout/app_bar_main">
 
     <com.wenchao.cardstack.CardStack
+        android:id="@+id/stackview"
         android:layout_width="400dp"
         android:layout_height="300dp"
-        android:id="@+id/stackview"
-        android:clipChildren="false"
-        android:clipToPadding="false"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"></com.wenchao.cardstack.CardStack>
+        android:layout_marginTop="30dp"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
+
+
+    <ImageView
+        android:id="@+id/fertilizer"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="335dp"
+        android:src="@drawable/fertilizer" />
+
+    <ImageView
+        android:id="@+id/seed"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="335dp"
+        android:src="@drawable/seed" />
+
+    <ImageView
+        android:id="@+id/pest"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/pesticide" />
+
 </RelativeLayout>
