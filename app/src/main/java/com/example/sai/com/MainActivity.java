@@ -10,6 +10,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -21,6 +22,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +31,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.sai.com.chatbot.MainActivityChat;
+import com.example.sai.com.schemes.Schemes;
 import com.example.sai.myfarmerapp.R;
 import com.firebase.client.Firebase;
 import com.google.android.gms.auth.api.Auth;
@@ -61,6 +65,11 @@ public class MainActivity extends AppCompatActivity
     private ImageView image;
     private CardStack cardStack;
     private CardAdapter cardAdapter;
+    private ImageView mImg;
+    private TextView tempTXT;
+    private TextView unitTXT;
+    private Animation anime;
+    private CardView cardTools;;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,19 +84,18 @@ public class MainActivity extends AppCompatActivity
         helper.checkNet(coordinatorLayout,this);
         firebaseAuth= FirebaseAuth.getInstance();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        // weather data retrieval
+        mImg = findViewById(R.id.img);
+        tempTXT = findViewById(R.id.temp);
+        unitTXT = findViewById(R.id.unit);
+        anime = AnimationUtils.loadAnimation(this,R.anim.fade);
+        Weather weather = new Weather();
+        weather.giveWeather(MainActivity.this,mImg,tempTXT,unitTXT,anime);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                  //      .setAction("Action", null).show();
-                Intent intent=new Intent(Intent.ACTION_SEND);
-                String[] recipients={"developer@gmail.com"};
-                intent.putExtra(Intent.EXTRA_EMAIL, recipients);
-                intent.putExtra(Intent.EXTRA_SUBJECT,"Subject text here...");
-                intent.putExtra(Intent.EXTRA_TEXT,"Body of the content here...");
-                intent.setType("text/html");
-                intent.setPackage("com.google.android.gm");
-                startActivity(Intent.createChooser(intent, "Send mail"));
+                startActivity(new Intent(MainActivity.this,MainActivityChat.class));
             }
         });
 
@@ -111,6 +119,14 @@ public class MainActivity extends AppCompatActivity
         cardStack.setContentResource(R.layout.card_layout);
         cardStack.setAdapter(cardAdapter);
         cardStack.setListener(this);
+
+        cardTools = findViewById(R.id.card4);
+        cardTools.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,Tools.class));
+            }
+        });
 
         Glide.with(getApplicationContext()).load(firebaseAuth.getCurrentUser().getPhotoUrl()).apply(RequestOptions.circleCropTransform()).into(image);
         usrname.setText(firebaseAuth.getCurrentUser().getDisplayName());
@@ -212,7 +228,8 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+           sendFeedback();
+           return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -229,7 +246,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_blogs) {
             startActivity(new Intent(MainActivity.this,ExecuteRSS.class));
         } else if (id == R.id.nav_change_pno) {
-            startActivity(new Intent(MainActivity.this,ChangePhone.class));
+            startActivity(new Intent(MainActivity.this,OTP.class));
         } else if (id == R.id.nav_group) {
             startActivity(new Intent(MainActivity.this,MainGroupChat.class));
         } else if (id == R.id.nav_share) {
@@ -269,6 +286,17 @@ public class MainActivity extends AppCompatActivity
         startActivity(shareintnet);
     }
 
+    private void sendFeedback(){
+        Intent intent=new Intent(Intent.ACTION_SEND);
+        String[] recipients={"developer@gmail.com"};
+        intent.putExtra(Intent.EXTRA_EMAIL, recipients);
+        intent.putExtra(Intent.EXTRA_SUBJECT,"Subject text here...");
+        intent.putExtra(Intent.EXTRA_TEXT,"Body of the content here...");
+        intent.setType("text/html");
+        intent.setPackage("com.google.android.gm");
+        startActivity(Intent.createChooser(intent, "Send mail"));
+    }
+
     @Override
     public boolean swipeEnd(int i, float v) {
         return v > 300;
@@ -291,6 +319,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void topCardTapped() {
-        startActivity(new Intent(MainActivity.this,Schemes.class));
+        startActivity(new Intent(MainActivity.this, Schemes.class));
     }
 }

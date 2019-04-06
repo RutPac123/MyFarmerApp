@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sai.com.Schemes">
+    android:background="@drawable/bacrec"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
+    <View
         android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#000"
+        android:layout_below="@+id/titshemes"
+        android:layout_marginTop="5dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:layout_centerInParent="true"
+        android:text="Agri Schemes"
         android:textSize="22sp"
-        android:text="Yaha pe schemes dalna hai.."/>
+        android:textColor="#000"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:fontFamily="monospace"
+        android:id="@+id/titshemes"/>
+
+<android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    tools:context="com.example.sai.com.schemes.Schemes"
+    android:layout_below="@+id/titshemes"
+    android:layout_margin="20dp"
+    android:id="@+id/recycle_scheme">
+
+</android.support.v7.widget.RecyclerView>
 </RelativeLayout>

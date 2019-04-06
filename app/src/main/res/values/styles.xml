@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">#00a86b</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
@@ -16,5 +16,13 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="CollapseAdapter" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textStyle">normal</item>
+    </style> <style name="ExpandedAppbar" parent="@android:style/TextAppearance.Material.Title">
+    <item name="android:textColor">@color/colorPrimary</item>
+    <item name="android:textStyle">normal</item>
+</style>
 
 </resources>

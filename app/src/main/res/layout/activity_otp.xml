@@ -90,4 +90,19 @@
         android:layout_alignRight="@+id/Phonenoedittext"
         android:layout_alignEnd="@+id/Phonenoedittext" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PhoneVerify"
+        android:layout_marginTop="16dp"
+        android:textSize="22sp"
+        android:textAlignment="center"
+        android:id="@+id/current_phone"/>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/coord"></android.support.design.widget.CoordinatorLayout>
+
 </RelativeLayout>

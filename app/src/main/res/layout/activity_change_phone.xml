@@ -32,6 +32,6 @@
         android:layout_centerHorizontal="true"
         android:text="Update Number"
         android:id="@+id/update_phone"
-        android:onClick="updatePhone"/>
+        />
 
 </RelativeLayout>

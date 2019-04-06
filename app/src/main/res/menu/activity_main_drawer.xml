@@ -14,11 +14,11 @@
             android:title="Agri Blogs" />
         <item
             android:id="@+id/nav_change_pno"
-            android:icon="@drawable/ic_settings_phone_black_24dp"
+            android:icon="@drawable/phone"
             android:title="Change Phone number" />
         <item
             android:id="@+id/nav_group"
-            android:icon="@drawable/ic_group_black_24dp"
+            android:icon="@drawable/group"
             android:title="Farmer Group" />
     </group>
 

@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -46,12 +48,19 @@ public class OTP extends AppCompatActivity {
     private Animation bounceanime,moveanime;
     private EditText e1;
     private Button b1;
-    private boolean isFirstRun=true;
+   // private boolean isFirstRun=true;
     private TextView exampleTxt;
     private SharedPreferences preferences;
     private CountryCodePicker codePicker;
     private String number;
     private View view;
+    private CoordinatorLayout coordinatorLayout;
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String TEXT = "text";
+
+    private String text;
+    private TextView mcurrentPhone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +71,9 @@ public class OTP extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_otp);
+        mcurrentPhone = findViewById(R.id.current_phone);
+
+        loadPhone();
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -71,13 +83,13 @@ public class OTP extends AppCompatActivity {
         }
         // getting first run boolean value(false) after 1st run
         SharedPreferences getpref = getSharedPreferences("FIRST_RUN",MODE_PRIVATE);
-        isFirstRun = getpref.getBoolean("checkrunstatus",true);
+       // isFirstRun = getpref.getBoolean("checkrunstatus",true);
 
-        if(!isFirstRun){  // if its not the 1st run
-            Intent intent = new Intent(OTP.this,LoginBoth.class);
-            startActivity(intent);
-            finish();
-        }
+//        if(!isFirstRun){  // if its not the 1st run
+//            Intent intent = new Intent(OTP.this,LoginBoth.class);
+//            startActivity(intent);
+//            finish();
+//        }
         parentlayout = findViewById(android.R.id.content);
         exampleTxt = findViewById(R.id.exampletxt);
         e1 =  findViewById(R.id.Phonenoedittext);
@@ -87,6 +99,7 @@ public class OTP extends AppCompatActivity {
         codePicker = findViewById(R.id.ccp);
         view = findViewById(R.id.mView);
         codePicker.registerCarrierNumberEditText(e1);
+        coordinatorLayout = findViewById(R.id.coord);
 
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)!= PackageManager.PERMISSION_GRANTED)
@@ -109,8 +122,8 @@ public class OTP extends AppCompatActivity {
             @Override
             public void onVerificationCompleted(PhoneAuthCredential credential) {
                 mVerificationInProgress = false;
-                Toast.makeText(OTP.this,"Verification Complete",Toast.LENGTH_SHORT).show();
-                signInWithPhoneAuthCredential(credential);
+                updatePhone();
+                Snackbar.make(coordinatorLayout,"Verification complete",Snackbar.LENGTH_SHORT).show();
                 progress.hide();
             }
 
@@ -129,12 +142,11 @@ public class OTP extends AppCompatActivity {
             @Override
             public void onCodeSent(String verificationId,
                                    PhoneAuthProvider.ForceResendingToken token) {
-                Toast.makeText(OTP.this,"Verification code has been send on your number",Toast.LENGTH_SHORT).show();
                 // Save verification ID and resending token so we can use them later
                 mVerificationId = verificationId;
                 mResendToken = token;
+                progress.hide();
 
-                startActivity(new Intent(OTP.this, MainActivity.class));
             }
         };
 
@@ -142,17 +154,19 @@ public class OTP extends AppCompatActivity {
 
             progress = ProgressDialog.show(OTP.this, "Please Wait..",
                     "Authenticating...", true);
+            progress.setCancelable(true);
             number = codePicker.getFullNumberWithPlus();
             if(e1.getText().toString().isEmpty()){
-                Toast.makeText(OTP.this, "Enter phone number!", Toast.LENGTH_SHORT).show();
+                Snackbar.make(coordinatorLayout,"Enter phone number!",Snackbar.LENGTH_SHORT).show();
+                progress.hide();
+            }else{
+                PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                        number,
+                        60,
+                        java.util.concurrent.TimeUnit.SECONDS,
+                        OTP.this,
+                        mCallbacks);   // this wil verify phone number
             }
-
-            PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                    number,
-                    60,
-                    java.util.concurrent.TimeUnit.SECONDS,
-                    OTP.this,
-                    mCallbacks);   // this wil verify phone number
         });
 
     }
@@ -161,20 +175,21 @@ public class OTP extends AppCompatActivity {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
+                        updatePhone(); //updation of phone number
                         SharedPreferences preferences = getSharedPreferences("PHONE_NO",MODE_PRIVATE);
                         SharedPreferences.Editor editorPhone = preferences.edit();
                         editorPhone.putString("p_no",e1.getText().toString());
                         editorPhone.apply();
-                        //mAuth.getInstance().signOut();
+
                         startActivity(new Intent(OTP.this,LoginBoth.class));
 
                         progress.hide();
                         // saving status of first run as false if the task is successful.
                         preferences = getSharedPreferences("FIRST_RUN",MODE_PRIVATE);
-                        isFirstRun = false;
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putBoolean("checkrunstatus",isFirstRun);
-                        editor.apply();
+                     //   isFirstRun = false;
+//                        SharedPreferences.Editor editor = preferences.edit();
+//                        editor.putBoolean("checkrunstatus",isFirstRun);
+                       // editor.apply();
 
                         finish();
                     } else {
@@ -186,5 +201,20 @@ public class OTP extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    public void updatePhone(){
+        //Save Phone Number
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(TEXT, e1.getText().toString());
+        editor.apply();
+        Toast.makeText(this, "Phone number saved!", Toast.LENGTH_SHORT).show();
+        loadPhone();
+    }
+
+    public void loadPhone(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        text = sharedPreferences.getString(TEXT, "Not Set");
+        mcurrentPhone.setText("Your current phone number is : "+text);
     }
 }
