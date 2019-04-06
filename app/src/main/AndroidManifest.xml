@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name="com.example.sai.com.Schemes"></activity>
+        <activity android:name="com.example.sai.com.Schemes" />
         <activity android:name="com.example.sai.com.NewsDetails" />
         <activity
             android:name="com.example.sai.com.ExecuteRSS"
@@ -42,7 +42,8 @@
         <activity android:name="com.example.sai.com.chatbot.MainActivityChat" />
         <activity android:name="com.example.sai.com.OTP" />
         <activity android:name="com.example.sai.com.MainGroupChat" />
-        <activity android:name="com.example.sai.com.ChangePhone"/>
+        <activity android:name="com.example.sai.com.ChangePhone" />
+        <activity android:name="com.example.sai.com.WebviewScheme"></activity>
     </application>
 
 </manifest>

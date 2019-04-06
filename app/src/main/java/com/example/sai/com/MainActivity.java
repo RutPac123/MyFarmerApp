@@ -194,11 +194,6 @@ public class MainActivity extends AppCompatActivity
         cardAdapter.add(R.mipmap.kisansanman);
         cardAdapter.add(R.mipmap.pashu);
         cardAdapter.add(R.mipmap.yojna);
-
-
-
-
-
     }
 
     @Override

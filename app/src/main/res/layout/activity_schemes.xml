@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sai.com.Schemes">
+    tools:context="com.example.sai.com.Schemes"
+    android:id="@+id/recycle_scheme">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:layout_centerInParent="true"
-        android:textSize="22sp"
-        android:text="Yaha pe schemes dalna hai.."/>
-</RelativeLayout>
+</android.support.v7.widget.RecyclerView>
