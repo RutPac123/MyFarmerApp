@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name="com.example.sai.com.ToolsDetails"></activity>
+        <activity android:name="com.example.sai.com.ToolsDetails" />
         <activity android:name="com.example.sai.com.Tools" />
         <activity android:name="com.example.sai.com.schemes.Schemes" />
         <activity android:name="com.example.sai.com.NewsDetails" />
@@ -46,6 +46,12 @@
         <activity android:name="com.example.sai.com.MainGroupChat" />
         <activity android:name="com.example.sai.com.ChangePhone" />
         <activity android:name="com.example.sai.com.schemes.WebviewScheme" />
+        <activity android:name="com.example.sai.com.Fertilizers" />
+        <activity android:name="com.example.sai.com.FertilizersDetails" />
+        <activity android:name="com.example.sai.com.Seeds" />
+        <activity android:name="com.example.sai.com.SeedsDetails" />
+        <activity android:name="com.example.sai.com.Insc" />
+        <activity android:name="com.example.sai.com.InscDetails"></activity>
     </application>
 
 </manifest>

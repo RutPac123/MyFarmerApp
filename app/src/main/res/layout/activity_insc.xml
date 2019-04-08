@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
-    tools:context="com.example.sai.com.Tools">
+    tools:context="com.example.sai.com.Insc">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
@@ -13,4 +12,5 @@
         android:id="@+id/toolsitemsview"
         android:scrollbars="vertical"
         android:layout_margin="20dp"/>
+
 </RelativeLayout>

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sai.com.ToolsDetails">
-
+    tools:context="com.example.sai.com.SeedsDetails">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -24,7 +23,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
-                android:id="@+id/mimg_tool"
+                android:id="@+id/smimg_tool"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
                 android:contentDescription="@null"
@@ -146,4 +145,5 @@
             </android.support.v7.widget.CardView>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
 </android.support.design.widget.CoordinatorLayout>

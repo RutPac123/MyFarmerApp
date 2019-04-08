@@ -69,7 +69,11 @@ public class MainActivity extends AppCompatActivity
     private TextView tempTXT;
     private TextView unitTXT;
     private Animation anime;
-    private CardView cardTools;;
+    private CardView cardTools;
+    private CardView cardFertilizers;
+    private CardView cardSeeds;
+    private CardView cardIns;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +129,30 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,Tools.class));
+            }
+        });
+
+        cardFertilizers = findViewById(R.id.card1);
+        cardFertilizers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,Fertilizers.class));
+            }
+        });
+
+        cardSeeds = findViewById(R.id.card2);
+        cardSeeds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,Seeds.class));
+            }
+        });
+
+        cardIns = findViewById(R.id.card3);
+        cardIns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,Insc.class));
             }
         });
 
