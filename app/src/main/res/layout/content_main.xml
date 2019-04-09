@@ -153,7 +153,7 @@
                 android:layout_below="@+id/card1"
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="240dp"
+                android:layout_marginRight="195dp"
                 android:layout_toLeftOf="@+id/card1"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="2dp">
@@ -231,9 +231,9 @@
                     android:id="@+id/img"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginEnd="30dp" />
+                    android:layout_toRightOf="@+id/unit"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp" />
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>

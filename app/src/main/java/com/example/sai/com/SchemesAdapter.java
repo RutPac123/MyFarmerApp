@@ -72,7 +72,7 @@ public class SchemesAdapter extends RecyclerView.Adapter<SchemesAdapter.SchemesV
                     break;
                 default:
                     intent = new Intent(context, WebviewScheme.class);
-                    intent.putExtra("url", "https://www.google.com");
+                    intent.putExtra("url", "http://agriculture.gov.in/");
                     break;
             }
             context.startActivity(intent);

@@ -16,7 +16,9 @@ public class Schemes extends AppCompatActivity {
 
     private TextView title;
     private Animation up,left;
-    private String[] schemesList = {"Soil health card", "Neem coated urea", "Pradhan Mantri krishi Sinchai", "National agricultural market"};
+    private String[] schemesList = {"Soil health card", "Neem coated urea", "Pradhan Mantri krishi Sinchai", "National agricultural market",
+    "Rashtriya Krishi Vikas Yojana", "Deen Dayal Upadhyaya Gram Jyoti Yojana", "National Mission for Sustainable Agriculture",
+    "Micro Irrigation Scheme", "Agriculture Contingency Plan"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

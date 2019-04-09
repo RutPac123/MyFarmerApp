@@ -55,10 +55,31 @@ public class Weather extends AppCompatActivity {
 
                         if (description.equals("clear sky")) {
                             image.startAnimation(anime);
-                            image.setBackgroundResource(R.mipmap.sunny);
-                        } else if (description.equals("haze")) {
+                            image.setImageResource(R.mipmap.sunny);
+                        } else if (description.equals("scattered clouds")) {
                             image.startAnimation(anime);
-                            image.setBackgroundResource(R.mipmap.cloudy);
+                            image.setImageResource(R.mipmap.cloudy);
+                        } else if(description.equals("few clouds")){
+                            image.startAnimation(anime);
+                            image.setImageResource(R.mipmap.few_clouds);
+                        }else if(description.equals("shower rain")){
+                            image.startAnimation(anime);
+                            image.setImageResource(R.mipmap.shower_rain);
+                        }else if(description.equals("rain")){
+                            image.startAnimation(anime);
+                            image.setImageResource(R.mipmap.rain);
+                        }else if(description.equals("thunderstorm")){
+                            image.startAnimation(anime);
+                            image.setImageResource(R.mipmap.thunderstorm);
+                        }else if(description.equals("mist")){
+                            image.startAnimation(anime);
+                            image.setImageResource(R.mipmap.mist);
+                        } else if(description.equals("smoke")){
+                            image.startAnimation(anime);
+                            image.setImageResource(R.mipmap.mist);
+                        }else {
+                            image.startAnimation(anime);
+                            image.setImageResource(R.mipmap.sunny);
                         }
 
 
