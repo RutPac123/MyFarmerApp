@@ -69,9 +69,29 @@ public class SchemesAdapter extends RecyclerView.Adapter<SchemesAdapter.SchemesV
                     intent = new Intent(context, WebviewScheme.class);
                     intent.putExtra("url", "https://www.enam.gov.in/web/");
                     break;
+                case 4:
+                    intent = new Intent(context, WebviewScheme.class);
+                    intent.putExtra("url", "https://rkvy.nic.in/");
+                    break;
+                case 5:
+                    intent = new Intent(context, WebviewScheme.class);
+                    intent.putExtra("url", "http://www.ddugjy.gov.in/portal/index.jsp");
+                    break;
+                case 6:
+                    intent = new Intent(context, WebviewScheme.class);
+                    intent.putExtra("url", "https://nmsa.dac.gov.in/");
+                    break;
+                case 7:
+                    intent = new Intent(context, WebviewScheme.class);
+                    intent.putExtra("url", "http://pmksy.gov.in/microirrigation/index.aspx");
+                    break;
+                case 8:
+                    intent = new Intent(context, WebviewScheme.class);
+                    intent.putExtra("url", "http://agricoop.nic.in/agriculture-contingency-plan-listing");
+                    break;
                 default:
                     intent = new Intent(context, WebviewScheme.class);
-                    intent.putExtra("url", "https://www.google.com");
+                    intent.putExtra("url", "http://agriculture.gov.in/");
                     break;
             }
             context.startActivity(intent);

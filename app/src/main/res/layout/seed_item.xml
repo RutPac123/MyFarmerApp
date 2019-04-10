@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="8dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:id="@+id/itemcard">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:id="@+id/seed_img"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/seed_name"
+                android:text="Name of seed"
+                android:textSize="20dp"
+                android:layout_alignParentLeft="true"
+                android:textColor="#000"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/rupee"
+        android:layout_toLeftOf="@+id/seed_price"
+        android:layout_below="@+id/itemcard"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RS.200/-"
+        android:id="@+id/seed_price"
+        android:textSize="20sp"
+        android:fontFamily="monospace"
+        android:layout_below="@+id/itemcard"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:padding="20dp"
+        />
+
+
+</RelativeLayout>

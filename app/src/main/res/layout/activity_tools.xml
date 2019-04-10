@@ -7,10 +7,18 @@
     android:background="#fff"
     tools:context="com.example.sai.com.Tools">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        app:title="Select Your Order ->"
+        app:titleTextColor="#fff"/>
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/toolsitemsview"
         android:scrollbars="vertical"
-        android:layout_margin="20dp"></android.support.v7.widget.RecyclerView>
+        android:layout_margin="20dp"/>
 </RelativeLayout>

@@ -1,16 +1,20 @@
 package com.example.sai.com.schemes;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.example.sai.myfarmerapp.R;
 
 public class WebviewScheme extends AppCompatActivity {
     private WebView webView;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +24,32 @@ public class WebviewScheme extends AppCompatActivity {
 
         webView =findViewById(R.id.webView);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl(durl);
 
+
+        progressDialog = new ProgressDialog(WebviewScheme.this);
+        progressDialog.setTitle("Your content is loading");
+        progressDialog.setIcon(R.drawable.loadingweb);
+        progressDialog.setMessage("Just relax...");
+        progressDialog.show();
+        webView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                return super.shouldOverrideUrlLoading(view, request);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+            }
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                Toast.makeText(WebviewScheme.this, "Error:" + description, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        webView.loadUrl(durl);
         WebSettings webSettings = webView.getSettings();
         webSettings.getJavaScriptEnabled();
     }

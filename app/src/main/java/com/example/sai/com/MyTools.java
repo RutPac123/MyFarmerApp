@@ -2,18 +2,28 @@ package com.example.sai.com;
 
 public class MyTools {
 
-    private String Name,Image,Description,Price,MenuId;
+    private String Name,Image,Description,Price,MenuId,Discount;
 
     public MyTools(){
 
     }
 
-    public MyTools(String name, String image, String description, String price, String menuId) {
+    public MyTools(String name, String image, String description, String price, String menuId,String discount) {
         Name = name;
         Image = image;
         Description = description;
         Price = price;
         MenuId = menuId;
+        Discount = discount;
+
+    }
+
+    public String getDiscount() {
+        return Discount;
+    }
+
+    public void setDiscount(String discount) {
+        Discount = discount;
     }
 
     public String getName() {

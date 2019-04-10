@@ -13,21 +13,28 @@
             android:icon="@drawable/blogs"
             android:title="Agri Blogs" />
         <item
-            android:id="@+id/nav_change_pno"
-            android:icon="@drawable/phone"
-            android:title="Change Phone number" />
-        <item
             android:id="@+id/nav_group"
             android:icon="@drawable/group"
             android:title="Farmer Group" />
+
+        <item
+            android:id="@+id/nav_my_cart"
+            android:title="My Cart"
+            android:icon="@drawable/cart"
+            />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Interact">
         <menu>
+            <item
+                android:id="@+id/nav_change_pno"
+                android:icon="@drawable/phone"
+                android:title="Change Phone number" />
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/share"
                 android:title="Share" />
+
             <item
                 android:id="@+id/nav_signout"
                 android:icon="@drawable/signoutgreen"

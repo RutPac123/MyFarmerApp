@@ -65,7 +65,7 @@ public class MainGroupChat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
              //   EditText input = findViewById(R.id.input);
-                FirebaseDatabase.getInstance().getReference().push().setValue(new ChatMessege(emojiconEditText.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getEmail()));
+                FirebaseDatabase.getInstance().getReference("Chats").push().setValue(new ChatMessege(emojiconEditText.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getEmail()));
                 emojiconEditText.setText("");
                 emojiconEditText.requestFocus();
             }
@@ -82,7 +82,7 @@ public class MainGroupChat extends AppCompatActivity {
 
     private void displayChatMsg() {
 
-        adapter = new FirebaseListAdapter<ChatMessege>(this,ChatMessege.class,R.layout.list_item, FirebaseDatabase.getInstance().getReference()) {
+        adapter = new FirebaseListAdapter<ChatMessege>(this,ChatMessege.class,R.layout.list_item, FirebaseDatabase.getInstance().getReference("Chats")) {
             @Override
             protected void populateView(View v, ChatMessege model, int position) {
                 TextView msg_txt,msg_user,msg_time;

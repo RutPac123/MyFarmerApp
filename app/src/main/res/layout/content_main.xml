@@ -1,230 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainrel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_main"
-    android:id="@+id/mainrel"
-    tools:context="com.example.sai.com.MainActivity">
+    tools:context="com.example.sai.com.MainActivity"
+    tools:showIn="@layout/app_bar_main">
 
-    <com.wenchao.cardstack.CardStack
-        android:layout_width="400dp"
-        android:layout_height="300dp"
-        android:id="@+id/stackview"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"></com.wenchao.cardstack.CardStack>
-
-    <ScrollView
-        android:layout_height="match_parent"
+    <ViewFlipper
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_height="200dp"
+        android:id="@+id/stackview"
+        android:onClick="onTapped"
+        />
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/stackview"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:layout_marginTop="20dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
-
-        <android.support.v7.widget.CardView
-    android:layout_width="150dp"
-    android:layout_height="150dp"
-    app:cardElevation="2dp"
-    app:cardCornerRadius="10dp"
-    android:id="@+id/card1"
-    android:layout_margin="20dp">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rel1"
-        android:background="#EAF0F1"
-        android:orientation="vertical"
-        android:padding="16dp">
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:id="@+id/img1"
-            android:background="#EAF0F1"
-            android:layout_centerHorizontal="true"
-            android:src="@mipmap/fertilizer"
-            android:scaleType="centerCrop"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Fertilizers"
-            android:textSize="18sp"
-            android:layout_below="@+id/img1"
-            android:textAlignment="center"
-            android:textColor="#000"/>
-    </RelativeLayout>
-</android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:cardElevation="2dp"
-        app:cardCornerRadius="10dp"
-        android:id="@+id/card2"
-        android:layout_toRightOf="@+id/card1"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rel2"
-        android:background="#EAF0F1"
-        android:orientation="vertical"
-        android:padding="16dp">
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:id="@+id/img2"
-            android:background="#EAF0F1"
-            android:layout_centerHorizontal="true"
-            android:src="@mipmap/seeds"
-            android:scaleType="centerCrop"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Seeds"
-            android:textSize="18sp"
-            android:layout_below="@+id/img2"
-            android:textAlignment="center"
-            android:textColor="#000"/>
-    </RelativeLayout>
-    </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:cardElevation="2dp"
-            app:cardCornerRadius="10dp"
-                android:id="@+id/card3"
-            android:layout_below="@+id/card2"
-            android:layout_toRightOf="@+id/card1"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/rel3"
-                android:background="#EAF0F1"
-                android:orientation="vertical"
-                android:padding="16dp">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:id="@+id/img3"
-                    android:background="#EAF0F1"
-                    android:layout_centerHorizontal="true"
-                    android:src="@mipmap/pesticide"
-                    android:scaleType="centerCrop"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Pesticides"
-                    android:textSize="18sp"
-                    android:layout_below="@+id/img3"
-                    android:textAlignment="center"
-                    android:textColor="#000"/>
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
+                android:id="@+id/card1"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                app:cardElevation="2dp"
+                android:layout_margin="20dp"
                 app:cardCornerRadius="10dp"
-                android:id="@+id/card4"
-                android:layout_below="@+id/card1"
-                android:layout_toLeftOf="@+id/card1"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="240dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="20dp"
-                >
+                android:onClick="openFert"
+                app:cardElevation="2dp">
+
                 <RelativeLayout
+                    android:id="@+id/rel1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/rel4"
                     android:background="#EAF0F1"
                     android:orientation="vertical"
                     android:padding="16dp">
+
                     <ImageView
+                        android:id="@+id/img1"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:id="@+id/img4"
-                        android:background="#EAF0F1"
                         android:layout_centerHorizontal="true"
-                        android:src="@mipmap/axe"
-                        android:scaleType="centerCrop"/>
+                        android:background="#EAF0F1"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/fertilizer" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tools"
-                        android:textSize="18sp"
-                        android:layout_below="@+id/img4"
+                        android:layout_below="@+id/img1"
+                        android:text="Fertilizers"
                         android:textAlignment="center"
-                        android:textColor="#000"/>
+                        android:textColor="#000"
+                        android:textSize="18sp" />
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
-    <RelativeLayout
-        android:id="@+id/lay2"
-        android:layout_below="@+id/card3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/temp"
-            android:fontFamily="casual"
-            android:textSize="100sp"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:layout_marginTop="50sp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:textStyle="bold"
-            android:textSize="50sp"
-            android:fontFamily="casual"
-            android:id="@+id/unit"
-            android:layout_toRightOf="@id/temp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="5dp"/>
-        <!--<TextView-->
-            <!--android:id="@+id/desc"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:fontFamily="casual"-->
-            <!--android:textSize="20sp"-->
-            <!--android:textStyle="bold"-->
-           <!--android:layout_toRightOf="@id/temp"-->
-            <!--android:layout_below="@+id/img"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:layout_marginLeft="200dp"-->
-            <!--android:textColor="#000"/>-->
 
-        <ImageView
-            android:id="@+id/img"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="30dp"
-            />
-    </RelativeLayout>
+            <android.support.v7.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/card1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:id="@+id/rel2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EAF0F1"
+                    android:orientation="vertical"
+                    android:onClick="openSeeds"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/img2"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="#EAF0F1"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/seeds" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/img2"
+                        android:text="Seeds"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card3"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/card2"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/card1"
+                app:cardCornerRadius="10dp"
+                android:onClick="openPests"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:id="@+id/rel3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EAF0F1"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/img3"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="#EAF0F1"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/pesticide" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/img3"
+                        android:text="Pesticides"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card4"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/card1"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="195dp"
+                android:layout_toLeftOf="@+id/card1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:id="@+id/rel4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EAF0F1"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/img4"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="#EAF0F1"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/axe" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/img4"
+                        android:text="Tools"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <RelativeLayout
+                android:id="@+id/lay2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/card3"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50sp"
+                    android:fontFamily="casual"
+                    android:textColor="#000"
+                    android:textSize="100sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_toRightOf="@id/temp"
+                    android:fontFamily="casual"
+                    android:textColor="#000"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
+                <!--<TextView-->
+                <!--android:id="@+id/desc"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:fontFamily="casual"-->
+                <!--android:textSize="20sp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_toRightOf="@id/temp"-->
+                <!--android:layout_below="@+id/img"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginLeft="200dp"-->
+                <!--android:textColor="#000"/>-->
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_toRightOf="@+id/unit"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="50dp" />
+            </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

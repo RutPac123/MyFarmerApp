@@ -1,15 +1,18 @@
 package com.example.sai.com;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.example.sai.com.Database.Database;
+import com.example.sai.com.Model.Order;
 import com.example.sai.myfarmerapp.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,7 +27,8 @@ public class ToolsDetails extends AppCompatActivity {
     ImageView toolimg;
     CollapsingToolbarLayout collapsingToolbarLayout;
     FloatingActionButton btnCart;
-    ElegantNumberButton elegantNumberButton;
+    private ElegantNumberButton elegantNumberButton;
+    MyTools tool;
 
     String toolId ="";
 
@@ -49,6 +53,18 @@ public class ToolsDetails extends AppCompatActivity {
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ExpandedAppbar);
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.CollapseAdapter);
 
+
+
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Database(ToolsDetails.this).addToCart(new Order(
+                        toolId,tool.getName(),elegantNumberButton.getNumber(),
+                        tool.getPrice(),tool.getDiscount()
+                ));
+                Toast.makeText(ToolsDetails.this, tool.getName()+" added to cart", Toast.LENGTH_SHORT).show();            }
+        });
+
         if (getIntent()!=null){
             toolId = getIntent().getStringExtra("ToolId");
 
@@ -63,7 +79,7 @@ public class ToolsDetails extends AppCompatActivity {
         tools.child(toolId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                MyTools tool = dataSnapshot.getValue(MyTools.class);
+                tool = dataSnapshot.getValue(MyTools.class);
                 Picasso.get().load(tool.getImage()).into(toolimg);
 
                 collapsingToolbarLayout.setTitle(tool.getName());

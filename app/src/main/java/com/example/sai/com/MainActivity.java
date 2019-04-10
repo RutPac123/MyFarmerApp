@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -27,30 +26,26 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.sai.Fertilizers.Fertilizers;
+import com.example.sai.Pesticides.Insc;
+import com.example.sai.com.Seeds.Seeds;
 import com.example.sai.com.chatbot.MainActivityChat;
 import com.example.sai.com.schemes.Schemes;
+import com.example.sai.myfarmerapp.Cart;
 import com.example.sai.myfarmerapp.R;
 import com.firebase.client.Firebase;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.wenchao.cardstack.CardStack;
+
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, CardStack.CardEventListener {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth firebaseAuth;
     private CoordinatorLayout coordinatorLayout;
@@ -63,13 +58,15 @@ public class MainActivity extends AppCompatActivity
     private GoogleApiClient googleApiClient;
     private Firebase firebase;
     private ImageView image;
-    private CardStack cardStack;
+    //  private CardStack cardStack;
     private CardAdapter cardAdapter;
     private ImageView mImg;
     private TextView tempTXT;
     private TextView unitTXT;
     private Animation anime;
-    private CardView cardTools;;
+    private CardView cardTools;
+    private ViewFlipper viewFlipper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,27 +78,27 @@ public class MainActivity extends AppCompatActivity
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         NetworkHelper helper = new NetworkHelper();
-        helper.checkNet(coordinatorLayout,this);
-        firebaseAuth= FirebaseAuth.getInstance();
+        helper.checkNet(coordinatorLayout, this);
+        firebaseAuth = FirebaseAuth.getInstance();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         // weather data retrieval
         mImg = findViewById(R.id.img);
         tempTXT = findViewById(R.id.temp);
         unitTXT = findViewById(R.id.unit);
-        anime = AnimationUtils.loadAnimation(this,R.anim.fade);
+        anime = AnimationUtils.loadAnimation(this, R.anim.fade);
         Weather weather = new Weather();
-        weather.giveWeather(MainActivity.this,mImg,tempTXT,unitTXT,anime);
+        weather.giveWeather(MainActivity.this, mImg, tempTXT, unitTXT, anime);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,MainActivityChat.class));
+                startActivity(new Intent(MainActivity.this, MainActivityChat.class));
             }
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -114,27 +111,37 @@ public class MainActivity extends AppCompatActivity
         usrmail = headerview.findViewById(R.id.umail);
         image = headerview.findViewById(R.id.imageView1);
 
-        initimages();
-        cardStack = findViewById(R.id.stackview);
-        cardStack.setContentResource(R.layout.card_layout);
-        cardStack.setAdapter(cardAdapter);
-        cardStack.setListener(this);
+        //initimages();
+        int images[] = {R.mipmap.farmeraccident, R.mipmap.fasal, R.mipmap.kisansanman,
+                R.mipmap.pashu, R.mipmap.yojna};
 
+//        cardStack = findViewById(R.id.stackview);
+//        cardStack.setContentResource(R.layout.card_layout);
+//        cardStack.setAdapter(cardAdapter);
+//        cardStack.setListener(this);
+        viewFlipper = findViewById(R.id.stackview);
+        for (int image : images) {
+            flipperImage(image);
+        }
+
+
+        //TOOLS
         cardTools = findViewById(R.id.card4);
         cardTools.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Tools.class));
+                startActivity(new Intent(MainActivity.this, Tools.class));
             }
         });
+
 
         Glide.with(getApplicationContext()).load(firebaseAuth.getCurrentUser().getPhotoUrl()).apply(RequestOptions.circleCropTransform()).into(image);
         usrname.setText(firebaseAuth.getCurrentUser().getDisplayName());
         usrmail.setText(firebaseAuth.getCurrentUser().getEmail());
 
 
-        SharedPreferences preferences = getSharedPreferences("NAME",MODE_PRIVATE);
-        nametxt = preferences.getString("uName",null);
+        SharedPreferences preferences = getSharedPreferences("NAME", MODE_PRIVATE);
+        nametxt = preferences.getString("uName", null);
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("User name");
@@ -143,51 +150,16 @@ public class MainActivity extends AppCompatActivity
         databaseReference = FirebaseDatabase.getInstance().getReference().child(firebaseAuth.getCurrentUser().getUid());
 
 
-
     }
 
-    private void initimages() {
-        cardAdapter = new CardAdapter(getApplicationContext(),0);
-        cardAdapter.add(R.mipmap.farmeraccident);
-        cardAdapter.add(R.mipmap.fasal);
-        cardAdapter.add(R.mipmap.kisansanman);
-        cardAdapter.add(R.mipmap.pashu);
-        cardAdapter.add(R.mipmap.yojna);
-        cardAdapter.add(R.mipmap.farmeraccident);
-        cardAdapter.add(R.mipmap.fasal);
-        cardAdapter.add(R.mipmap.kisansanman);
-        cardAdapter.add(R.mipmap.pashu);
-        cardAdapter.add(R.mipmap.yojna);
-        cardAdapter.add(R.mipmap.farmeraccident);
-        cardAdapter.add(R.mipmap.fasal);
-        cardAdapter.add(R.mipmap.kisansanman);
-        cardAdapter.add(R.mipmap.pashu);
-        cardAdapter.add(R.mipmap.yojna);
-        cardAdapter.add(R.mipmap.farmeraccident);
-        cardAdapter.add(R.mipmap.fasal);
-        cardAdapter.add(R.mipmap.kisansanman);
-        cardAdapter.add(R.mipmap.pashu);
-        cardAdapter.add(R.mipmap.yojna);cardAdapter.add(R.mipmap.farmeraccident);
-        cardAdapter.add(R.mipmap.fasal);
-        cardAdapter.add(R.mipmap.kisansanman);
-        cardAdapter.add(R.mipmap.pashu);
-        cardAdapter.add(R.mipmap.yojna);cardAdapter.add(R.mipmap.farmeraccident);
-        cardAdapter.add(R.mipmap.fasal);
-        cardAdapter.add(R.mipmap.kisansanman);
-        cardAdapter.add(R.mipmap.pashu);
-        cardAdapter.add(R.mipmap.yojna);cardAdapter.add(R.mipmap.farmeraccident);
-        cardAdapter.add(R.mipmap.fasal);
-        cardAdapter.add(R.mipmap.kisansanman);
-        cardAdapter.add(R.mipmap.pashu);
-        cardAdapter.add(R.mipmap.yojna);cardAdapter.add(R.mipmap.farmeraccident);
-        cardAdapter.add(R.mipmap.fasal);
-        cardAdapter.add(R.mipmap.kisansanman);
-        cardAdapter.add(R.mipmap.pashu);
-        cardAdapter.add(R.mipmap.yojna);
-
-
-
-
+    public void flipperImage(int image) {
+        ImageView imageView = new ImageView(this);
+        imageView.setBackgroundResource(image);
+        viewFlipper.addView(imageView);
+        viewFlipper.setFlipInterval(3000);
+        viewFlipper.setAutoStart(true);
+        viewFlipper.setInAnimation(this, android.R.anim.slide_in_left);
+        viewFlipper.setOutAnimation(this, android.R.anim.slide_out_right);
 
     }
 
@@ -198,7 +170,7 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else if (exit) {
             finish(); // finish activity
-        } else if (!drawer.isDrawerOpen(GravityCompat.START)){ // if drawer isn't opened
+        } else if (!drawer.isDrawerOpen(GravityCompat.START)) { // if drawer isn't opened
             Toast.makeText(this, "Press Back again to Exit.",
                     Toast.LENGTH_SHORT).show();
             exit = true;
@@ -228,8 +200,8 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-           sendFeedback();
-           return true;
+            sendFeedback();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -244,11 +216,13 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
 
         } else if (id == R.id.nav_blogs) {
-            startActivity(new Intent(MainActivity.this,ExecuteRSS.class));
+            startActivity(new Intent(MainActivity.this, ExecuteRSS.class));
         } else if (id == R.id.nav_change_pno) {
-            startActivity(new Intent(MainActivity.this,OTP.class));
+            startActivity(new Intent(MainActivity.this, OTP.class));
         } else if (id == R.id.nav_group) {
-            startActivity(new Intent(MainActivity.this,MainGroupChat.class));
+            startActivity(new Intent(MainActivity.this, MainGroupChat.class));
+        } else if (id == R.id.nav_my_cart) {
+            startActivity(new Intent(MainActivity.this, Cart.class));
         } else if (id == R.id.nav_share) {
             shareIt();
         } else if (id == R.id.nav_signout) {
@@ -278,47 +252,45 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private void shareIt(){
+
+    public void onTapped(View view) {
+        startActivity(new Intent(MainActivity.this, Schemes.class));
+    }
+
+    private void shareIt() {
         final String link = "https://play.google.com/store";
         Intent shareintnet = new Intent(Intent.ACTION_SEND);
-        shareintnet.putExtra(Intent.EXTRA_TEXT,"Hey download this useful farming related application  -> \n"+ link);
+        shareintnet.putExtra(Intent.EXTRA_TEXT, "Hey download this useful farming related application  -> \n" + link);
         shareintnet.setType("text/plain");
         startActivity(shareintnet);
     }
 
-    private void sendFeedback(){
-        Intent intent=new Intent(Intent.ACTION_SEND);
-        String[] recipients={"developer@gmail.com"};
+    private void sendFeedback() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        String[] recipients = {"developer@gmail.com"};
         intent.putExtra(Intent.EXTRA_EMAIL, recipients);
-        intent.putExtra(Intent.EXTRA_SUBJECT,"Subject text here...");
-        intent.putExtra(Intent.EXTRA_TEXT,"Body of the content here...");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Subject text here...");
+        intent.putExtra(Intent.EXTRA_TEXT, "Body of the content here...");
         intent.setType("text/html");
         intent.setPackage("com.google.android.gm");
         startActivity(Intent.createChooser(intent, "Send mail"));
     }
 
-    @Override
-    public boolean swipeEnd(int i, float v) {
-        return v > 300;
+    //Fertilizers
+    public void openFert(View view) {
+        startActivity(new Intent(MainActivity.this, Fertilizers.class));
     }
 
-    @Override
-    public boolean swipeStart(int i, float v) {
-        return true;
+
+    //Seeds
+    public void openSeeds(View view) {
+        startActivity(new Intent(MainActivity.this, Seeds.class));
     }
 
-    @Override
-    public boolean swipeContinue(int i, float v, float v1) {
-        return true;
+
+    //Pesticides
+    public void openPests(View view) {
+        startActivity(new Intent(MainActivity.this, Insc.class));
     }
 
-    @Override
-    public void discarded(int i, int i1) {
-
-    }
-
-    @Override
-    public void topCardTapped() {
-        startActivity(new Intent(MainActivity.this, Schemes.class));
-    }
 }

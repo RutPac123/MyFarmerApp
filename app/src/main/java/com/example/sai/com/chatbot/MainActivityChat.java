@@ -82,9 +82,6 @@ public class MainActivityChat extends AppCompatActivity {
         inputMessage = findViewById(R.id.message);
         btnSend = findViewById(R.id.btn_send);
         btnRecord= findViewById(R.id.btn_record);
-        String customFont = "Montserrat-Regular.ttf";
-      //  Typeface typeface = Typeface.createFromAsset(getAssets(), customFont);
-     //   inputMessage.setTypeface(typeface);
         recyclerView = findViewById(R.id.recycler_view);
 
         messageArrayList = new ArrayList<>();
@@ -104,7 +101,7 @@ public class MainActivityChat extends AppCompatActivity {
         //Watson Text-to-Speech Service on IBM Cloud
         final TextToSpeech textService = new TextToSpeech();
         //Use "apikey" as username and apikey values as password
-        textService.setUsernameAndPassword("apikey", "4JYsCtSv0zuJriTcx4bGShcBfBj4Zxx-qclsgJrTy0t");
+        textService.setUsernameAndPassword("apikey", "05LUN4B4923GK20XegAKoSs37uz3MSpFzwBprbNqALjD");
         textService.setEndPoint("https://gateway-lon.watsonplatform.net/assistant/api");
 
         int permission = ContextCompat.checkSelfPermission(this,
@@ -340,7 +337,7 @@ public class MainActivityChat extends AppCompatActivity {
         Assistant assistantservice = new Assistant("2018-02-16");
         //If you like to use USERNAME AND PASSWORD
         //Your Username: "apikey", password: "<APIKEY_VALUE>"
-        assistantservice.setUsernameAndPassword("apikey", "4JYsCtSv0zuJriTcx4bGShcBfBj4Zxx-qclsgJrTy0tX");
+        assistantservice.setUsernameAndPassword("apikey", "05LUN4B4923GK20XegAKoSs37uz3MSpFzwBprbNqALjD");
 
         //TODO: Uncomment this line if you want to use API KEY
         //assistantservice.setApiKey("<API_KEY_VALUE>");
@@ -349,7 +346,7 @@ public class MainActivityChat extends AppCompatActivity {
         assistantservice.setEndPoint("https://gateway-lon.watsonplatform.net/assistant/api");
         InputData input = new InputData.Builder(inputmessage).build();
         //WORKSPACES are now SKILLS
-        MessageOptions options = new MessageOptions.Builder().workspaceId("1a89af48-9456-494a-8abd-1ca529fa0601").input(input).context(context).build();
+        MessageOptions options = new MessageOptions.Builder().workspaceId("21707399-f512-4a54-827a-b23fa2b1280a").input(input).context(context).build();
         MessageResponse response = assistantservice.message(options).execute();
                     Log.i(TAG, "run: "+response);
 
@@ -411,7 +408,7 @@ public class MainActivityChat extends AppCompatActivity {
     private void recordMessage() {
         speechService = new SpeechToText();
         //Use "apikey" as username and apikey as your password
-        speechService.setUsernameAndPassword("apikey", "4JYsCtSv0zuJriTcx4bGShcBfBj4Zxx-qclsgJrTy0tX");
+        speechService.setUsernameAndPassword("apikey", "05LUN4B4923GK20XegAKoSs37uz3MSpFzwBprbNqALjD");
         //Default: https://stream.watsonplatform.net/text-to-speech/api
         speechService.setEndPoint("https://gateway-lon.watsonplatform.net/assistant/api");
 

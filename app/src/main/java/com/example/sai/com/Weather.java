@@ -53,14 +53,44 @@ public class Weather extends AppCompatActivity {
 //                        descript.startAnimation(anime);
 //                        descript.setText(description);
 
-                        if (description.equals("clear sky")) {
-                            image.startAnimation(anime);
-                            image.setBackgroundResource(R.mipmap.sunny);
-                        } else if (description.equals("haze")) {
-                            image.startAnimation(anime);
-                            image.setBackgroundResource(R.mipmap.cloudy);
+                        switch (description) {
+                            case "clear sky":
+                                image.startAnimation(anime);
+                                image.setImageResource(R.mipmap.sunny);
+                                break;
+                            case "scattered clouds":
+                                image.startAnimation(anime);
+                                image.setImageResource(R.mipmap.cloudy);
+                                break;
+                            case "few clouds":
+                                image.startAnimation(anime);
+                                image.setImageResource(R.mipmap.few_clouds);
+                                break;
+                            case "shower rain":
+                                image.startAnimation(anime);
+                                image.setImageResource(R.mipmap.shower_rain);
+                                break;
+                            case "rain":
+                                image.startAnimation(anime);
+                                image.setImageResource(R.mipmap.rain);
+                                break;
+                            case "thunderstorm":
+                                image.startAnimation(anime);
+                                image.setImageResource(R.mipmap.thunderstorm);
+                                break;
+                            case "mist":
+                                image.startAnimation(anime);
+                                image.setImageResource(R.mipmap.mist);
+                                break;
+                            case "smoke":
+                                image.startAnimation(anime);
+                                image.setImageResource(R.mipmap.mist);
+                                break;
+                            default:
+                                image.startAnimation(anime);
+                                image.setImageResource(R.mipmap.sunny);
+                                break;
                         }
-
 
                     } catch (JSONException e) {
                         e.printStackTrace();

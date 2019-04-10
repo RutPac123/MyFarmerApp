@@ -50,7 +50,6 @@ public class Tools extends AppCompatActivity {
                 viewHolder.toolprice.setText(model.getPrice());
                 Picasso.get().load(model.getImage()).into(viewHolder.toolimg);
 
-               final MyTools toolClicked = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
